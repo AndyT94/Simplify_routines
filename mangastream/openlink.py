@@ -9,7 +9,6 @@ import urllib.request
 import webbrowser
 import sys
 
-
 if len(sys.argv) > 2:
     filter = (' ').join(sys.argv[1:])
 else:
