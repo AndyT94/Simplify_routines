@@ -17,7 +17,7 @@ def parse_html(website):
     html = response.read()
     return BeautifulSoup(html, "lxml")
 
-def main(args):
+def main(filter):
     website = 'https://readms.net/'
     parsed_html = parse_html(website)
     latest_manga = parsed_html.body.find('ul', attrs={'class':'new-list'})
