@@ -17,7 +17,11 @@ def parse_html(website):
     html = response.read()
     return BeautifulSoup(html, "lxml")
 
-def main(filter):
+def main(args):
+    if len(sys.argv) > 1:
+        filter = (' ').join(sys.argv[1:])
+    else:
+        filter = 'today'
     website = 'https://readms.net/'
     parsed_html = parse_html(website)
     latest_manga = parsed_html.body.find('ul', attrs={'class':'new-list'})
@@ -27,8 +31,4 @@ def main(filter):
             webbrowser.get('firefox.exe %s').open(website + manga.find('a').get('href'))
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        filter = (' ').join(sys.argv[1:])
-    else:
-        filter = 'today'
-    main(filter)
+    main(sys.argv[1:])
